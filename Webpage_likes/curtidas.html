@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        #campoTexto {
+            width: 250px;
+            height: 50px;
+            margin-top: 10px;
+        }
+        button {
+            width: 60px;
+            height: 35px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <label for="campoTexto"> Usuário: </label>
+    <input type='text' id="campoTexto"/>
+    <button id="botao" onclick="adicionarUser()"> Curtir </button>
+    <p>  </p>
+
+    <script src="curtidas.js"> </script>
+</body>
+</html>
