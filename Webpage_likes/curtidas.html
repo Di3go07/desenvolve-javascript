@@ -20,6 +20,7 @@
             margin-top: 10px;
         }
         button {
+            cursor: pointer;
             width: 60px;
             height: 35px;
             margin-top: 20px;
@@ -27,12 +28,20 @@
             color: white;
             background-color: red;
         }
+        #botao_limpar {
+            background: none;
+            border: none;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <label for="campoTexto"> Usuário: </label>
     <input type='text' id="campoTexto"/>
-    <button id="botao" onclick="adicionarUser()"> Curtir </button>
+    <div class="buttons">
+        <button id="botao" onclick="adicionarUser()"> Curtir </button>
+        <button id="botao_limpar" onclick="limparCache()"> Limpar </button>
+    </div>
     <p>  </p>
 
     <script src="curtidas.js"> </script>

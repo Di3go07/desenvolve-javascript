@@ -49,3 +49,9 @@ function mostrarLikes() {
         texto.innerText = `${curtidas[0]}, ${curtidas[1]} e mais ${curtidas.length} curtiram`;
     }   
 }
+
+//limpar cache
+function limparCache() {
+    localStorage.clear('likes');
+    location.reload();
+}
