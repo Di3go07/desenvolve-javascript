@@ -40,28 +40,7 @@ function carregarTarefas() {
         }
     } else {
         setTimeout( () => {
-        tarefa = prompt("Digite uma tarefa:")
-            if (tarefa == null || tarefa == "") {
-                console.log("User cancelled the prompt");
-            } else {
-                const mainDiv = document.getElementById("tarefas");
-                const newDiv = document.createElement("div");
-                newDiv.id = indexs.length;
-                const input = document.createElement("input");
-                input.id = 'scales';
-                input.type = 'checkbox';
-                input.name =  indexs.length;
-                const label = document.createElement("label");
-                label.for = 'scales';
-                label.appendChild(document.createTextNode(tarefa));
-                newDiv.appendChild(input);
-                newDiv.appendChild(label);
-                mainDiv.insertAdjacentElement("afterend", newDiv);
-        
-                const indexElemento = indexs.length;
-                indexs.push(1);
-                armazenarTarefa(indexElemento, tarefa);
-            }
+            alert('Digite uma tarefa')
         }, 1500);
           
     }
