@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title> Aula </title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: 600;
+            font-size: 18px;
+        }
+        h1 {
+            margin-top: 50px;
+        }
+        div {
+            display: flex;
+            flex-direction: row;
+        }
+        input {
+            width: 20px;
+        }
+        #campoTexto {
+            width: 250px;
+            height: 50px;
+            margin-top: 10px;
+        }
+        button {
+            width: 80px;
+            height: 35px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <label for="campoTexto"> Nova tarefa: </label>
+    <input type='text' id="campoTexto"/>
+    <button id="botao" onclick="criarTarefa()"> Adicionar </button>
+
+    <div id="tarefas">
+        <h1> Tarefas </h1>
+
+    </div>
+
+    <script src="tarefas.js"> </script>
+</body>
+</html>
