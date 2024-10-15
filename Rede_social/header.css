@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 18px;
+    background-color: #F2E7DC;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* HEADER */
+
+#banner {
+    display: flex;
+    flex-direction: row;
+    background-color: #0D0D0D;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    padding: 50px;
+}
+
+header h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 800;
+    font-size: 120px;
+    background-image: linear-gradient(#F2E7DC 30%, #027373);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+

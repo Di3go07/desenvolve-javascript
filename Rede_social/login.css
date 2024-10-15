@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 18px;
+    background-color: #F2E7DC;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 100px;
+}
+
+/*  MAAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 100px;
+    align-items: center;
+    background-color: #A9D9D0;
+    border-radius: 20px;
+    padding: 100px;
+    overflow: auto;
+}
+
+main h2{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #0D0D0D;
+    font-weight: 800;
+    font-size: 50px;
+    margin-bottom: 80px;
+}
+
+#cadastro {
+    width: auto;
+}
+
+#cadastro section{
+    display: flex;
+    flex-direction: column;
+}
+
+#cadastro input{
+    background-color: #F2E7DC;
+    margin-bottom: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#cadastro label{
+    color: #0D0D0D;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+button {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 30px;
+    padding: 10px;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    background-color: #027373;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
