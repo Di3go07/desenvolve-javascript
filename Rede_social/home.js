@@ -80,6 +80,8 @@
             const newDiv = document.createElement("div");
             newDiv.id = ultimos_posts[i];
             newDiv.style.marginBottom = '30px';
+            newDiv.style.marginLeft = '25px';
+            newDiv.style.marginRight = '25px';
             newDiv.style.paddingTop = '20px';
             newDiv.style.paddingBottom = '20px';
             newDiv.style.paddingLeft = '50px';
@@ -89,11 +91,11 @@
 
             const post_user = document.createElement("h3");
             post_user.appendChild(document.createTextNode(nome));
-            post_user.style.paddingBottom = '20px';
+            post_user.style.paddingBottom = '25px';
 
             const post_text = document.createElement("p");
             post_text.appendChild(document.createTextNode(post));
-            post_text.style.paddingBottom = '20px';
+            post_text.style.paddingBottom = '25px';
             post_text.style.textAlign = 'justify'
 
 
@@ -101,6 +103,7 @@
             button_like.appendChild(document.createTextNode(`Likes ${data.likes}`))
             button_like.style.cursor = 'pointer';
             button_like.style.fontSize = '14px';
+            button_like.style.fontFamily = 'Arial';
             button_like.style.width = '80px';
             button_like.style.height = '30px';
             button_like.style.alignItems = 'center';
