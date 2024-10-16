@@ -24,7 +24,7 @@
 
     //Resgata os posts anteriores
     const indexes = [0];
-    if (localStorage.length > 0) {
+    if (localStorage.length > 0) { //adiciona à lista a mesma quantidade de itens que tem no storage
         for (let i = 0; i < localStorage.length; i++ ) {
             indexes.push(1)
         }
@@ -34,21 +34,22 @@
     //Texto dinâmico
     const textoPensando = document.getElementById('Textopensando');
     const infos = (sessionStorage.getItem('User_logado'));
-    const dados = infos.split(',');
+    const dados = infos.split(','); //separa as informações do usuario
     
     const user = dados[0]
     const avatar = dados[2]
 
     textoPensando.innerText = (`O que você está pensando, ${user}`);
 
+    //Busca uma imagem em uma API
     async function buscaImagem(post) {
         const data = (await fetch('https://meme-api.com/gimme'))
         const objeto_API = await data.json();
         var imagem_escolhida = await objeto_API.url;
-        post.imagem = imagem_escolhida;
+        post.imagem = imagem_escolhida; //atualiza o objeto postagem com a imagem resgatada
         
-        const infos = JSON.stringify(post);
-        localStorage.setItem(`post ${indexes.length}`, infos);
+        const infos = JSON.stringify(post); 
+        localStorage.setItem(`post ${indexes.length}`, infos); //salva o objeto postagem atualizado no storage
         criaElemento();
 
     }
@@ -56,7 +57,7 @@
     //Configurando botão de post
     const botaoPostagem = document.getElementById('botaoPostagem');
 
-    botaoPostagem.addEventListener('click', () => {     //salva postagem no localStorage
+    botaoPostagem.addEventListener('click', () => {     //cria os elementos da postagem
         const textoPostagem = document.getElementById('areaPostagem');
 
         const postagem = {
@@ -67,8 +68,8 @@
         }
 
         buscaImagem(postagem)
-        textoPostagem.value = "";
-        indexes.push(1);
+        textoPostagem.value = ""; //resete a textarea
+        indexes.push(1); 
     })
 
     //Função que cria um novo post na DOM
@@ -83,6 +84,7 @@
         const likes = data.likes;
 
         //criando na DOM
+        //div
         const newDiv = document.createElement("div");
         newDiv.id = `post ${indexes.length}`;
         newDiv.style.display = 'flex';
@@ -97,25 +99,27 @@
         newDiv.style.border = '1px solid #027373';
         newDiv.style.borderRadius = "10px";
 
+        //section user e avatar
         const area_user = document.createElement('section');
         area_user.id = 'area_user';
         area_user.style.display = 'flex';
         area_user.style.flexDirection = 'row';
         area_user.style.paddingBottom = '20px';
 
-
+        //avatar
         const post_avatar = document.createElement('img');
         post_avatar.src = avatar;
         post_avatar.style.width = '60px';
         post_avatar.style.height = '60px';
         post_avatar.style.borderRadius = "50px";
 
-
+        //user
         const post_user = document.createElement("h3");
         post_user.appendChild(document.createTextNode(nome));
         post_user.style.paddingLeft = "20px";
         post_user.style.paddingTop = "20px";
 
+        //post
         const post_text = document.createElement("p");
         post_text.appendChild(document.createTextNode(post));
         post_text.style.paddingBottom = '25px';
@@ -123,6 +127,7 @@
         post_text.style.paddingLeft = "20px";
         post_text.style.paddingRight = "30px"
 
+        //imagem do post
         const post_imagem = document.createElement('img');
         post_imagem.src = imagem;
         post_imagem.style.width = "200px";
@@ -132,6 +137,7 @@
         post_imagem.style.border = "2px solid #027373";
         post_imagem.style.borderRadius = '10px';
 
+        //botão do like
         const button_like = document.createElement("button")
         button_like.appendChild(document.createTextNode(`Likes ${data.likes}`))
         button_like.style.cursor = 'pointer';
@@ -159,6 +165,7 @@
             button_like.innerText = `Likes ${data.likes}`; 
         })
 
+        //adiciona ao DOM
         area_user.appendChild(post_avatar)
         area_user.appendChild(post_user);
         newDiv.appendChild(area_user)
@@ -270,6 +277,7 @@
                 button_like.innerText = `Likes ${data.likes}`; 
             })
 
+            //adiciona ao DOM
             area_user.appendChild(post_avatar)
             area_user.appendChild(post_user);
             newDiv.appendChild(area_user)
