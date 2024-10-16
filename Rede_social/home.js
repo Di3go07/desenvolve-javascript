@@ -32,42 +32,56 @@
     const dados = infos.split(',');
     
     const user = dados[0]
-    const imagem = dados[2]
+    const avatar = dados[2]
 
     textoPensando.innerText = (`O que você está pensando, ${user}`);
 
+    async function buscaImagem(post) {
+        const data = (await fetch('https://api.thecatapi.com/v1/images/search'))
+        const objeto_API = await data.json();
+        var imagem_escolhida = await objeto_API[0].url;
+        post.imagem = imagem_escolhida;
+        
+        const infos = JSON.stringify(post);
+        localStorage.setItem(`post ${indexes.length}`, infos);
+        criaElemento();
+
+    }
 
     //Configurando botão de post
     const botaoPostagem = document.getElementById('botaoPostagem');
 
     botaoPostagem.addEventListener('click', () => {     //salva postagem no localStorage
         const textoPostagem = document.getElementById('areaPostagem');
+
         const postagem = {
             'nome': user,
-            'avatar': imagem,
+            'avatar': avatar,
             'post': textoPostagem.value,
             'likes': 0,
         }
-        const infos = JSON.stringify(postagem);
-        localStorage.setItem(`post ${indexes.length}`, infos);
-        criaElemento();
+
+        buscaImagem(postagem)
         textoPostagem.value = "";
         indexes.push(1);
-
     })
 
     //Função que cria um novo post na DOM
     function criaElemento() { 
+        //criando elementos
         const mainArticle = document.getElementById("postagens");
         const data = JSON.parse(localStorage.getItem(`post ${indexes.length}`));
         const nome = data.nome;
         const avatar = data.avatar;
         const post = data.post;
+        const imagem = data.imagem;
         const likes = data.likes;
 
         //criando na DOM
         const newDiv = document.createElement("div");
         newDiv.id = `post ${indexes.length}`;
+        newDiv.style.display = 'flex';
+        newDiv.style.flexDirection = 'column';
         newDiv.style.marginBottom = '30px';
         newDiv.style.marginLeft = '25px';
         newDiv.style.marginRight = '25px';
@@ -85,11 +99,11 @@
         area_user.style.paddingBottom = '20px';
 
 
-        const post_imagem = document.createElement('img');
-        post_imagem.src = avatar;
-        post_imagem.style.width = '60px';
-        post_imagem.style.height = '60px';
-        post_imagem.style.borderRadius = "50px";
+        const post_avatar = document.createElement('img');
+        post_avatar.src = avatar;
+        post_avatar.style.width = '60px';
+        post_avatar.style.height = '60px';
+        post_avatar.style.borderRadius = "50px";
 
 
         const post_user = document.createElement("h3");
@@ -104,6 +118,14 @@
         post_text.style.paddingLeft = "20px";
         post_text.style.paddingRight = "30px"
 
+        const post_imagem = document.createElement('img');
+        post_imagem.src = imagem;
+        post_imagem.style.width = "200px";
+        post_imagem.style.height = "140px";
+        post_imagem.style.marginBottom = "20px";  
+        post_imagem.style.marginLeft = "20px"; 
+        post_imagem.style.border = "2px solid #027373";
+        post_imagem.style.borderRadius = '10px';
 
         const button_like = document.createElement("button")
         button_like.appendChild(document.createTextNode(`Likes ${data.likes}`))
@@ -132,10 +154,11 @@
             button_like.innerText = `Likes ${data.likes}`; 
         })
 
-        area_user.appendChild(post_imagem)
+        area_user.appendChild(post_avatar)
         area_user.appendChild(post_user);
         newDiv.appendChild(area_user)
         newDiv.appendChild(post_text);
+        newDiv.appendChild(post_imagem);
         newDiv.appendChild(button_like)
 
         mainArticle.insertAdjacentElement('afterbegin', newDiv);
@@ -162,11 +185,14 @@
             const nome = data.nome;
             const avatar = data.avatar;
             const post = data.post;
+            const imagem = data.imagem;
             const likes = data.likes;
 
             //criando na DOM
             const newDiv = document.createElement("div");
             newDiv.id = ultimos_posts[i];
+            newDiv.style.display = 'flex';
+            newDiv.style.flexDirection = 'column';
             newDiv.style.marginBottom = '30px';
             newDiv.style.marginLeft = '25px';
             newDiv.style.marginRight = '25px';
@@ -184,11 +210,11 @@
             area_user.style.paddingBottom = '20px';
 
 
-            const post_imagem = document.createElement('img');
-            post_imagem.src = avatar;
-            post_imagem.style.width = '60px';
-            post_imagem.style.height = '60px';
-            post_imagem.style.borderRadius = "50px";
+            const post_avatar = document.createElement('img');
+            post_avatar.src = avatar;
+            post_avatar.style.width = '60px';
+            post_avatar.style.height = '60px';
+            post_avatar.style.borderRadius = "50px";
 
 
             const post_user = document.createElement("h3");
@@ -203,6 +229,14 @@
             post_text.style.paddingLeft = "20px";
             post_text.style.paddingRight = "30px"
 
+            const post_imagem = document.createElement('img');
+            post_imagem.src = imagem;
+            post_imagem.style.width = "260px";
+            post_imagem.style.height = "180px";
+            post_imagem.style.marginBottom = "20px";  
+            post_imagem.style.marginLeft = "20px"; 
+            post_imagem.style.border = "2px solid #027373";
+            post_imagem.style.borderRadius = '10px';
 
             const button_like = document.createElement("button")
             button_like.appendChild(document.createTextNode(`Likes ${data.likes}`))
@@ -231,11 +265,12 @@
                 button_like.innerText = `Likes ${data.likes}`; 
             })
 
-            area_user.appendChild(post_imagem)
+            area_user.appendChild(post_avatar)
             area_user.appendChild(post_user);
             newDiv.appendChild(area_user)
             newDiv.appendChild(post_text);
-            newDiv.appendChild(button_like)
+            newDiv.appendChild(post_imagem);
+            newDiv.appendChild(button_like);
 
             mainArticle.appendChild(newDiv);
         }
