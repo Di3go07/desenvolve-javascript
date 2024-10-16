@@ -1,3 +1,8 @@
+/*
+    Mensagem:
+    Usei uma API diferente da sugerida na atividade, essa gera memes
+*/
+
 //HOME
 ( () => {
 
@@ -37,9 +42,9 @@
     textoPensando.innerText = (`O que você está pensando, ${user}`);
 
     async function buscaImagem(post) {
-        const data = (await fetch('https://api.thecatapi.com/v1/images/search'))
+        const data = (await fetch('https://meme-api.com/gimme'))
         const objeto_API = await data.json();
-        var imagem_escolhida = await objeto_API[0].url;
+        var imagem_escolhida = await objeto_API.url;
         post.imagem = imagem_escolhida;
         
         const infos = JSON.stringify(post);
@@ -121,7 +126,7 @@
         const post_imagem = document.createElement('img');
         post_imagem.src = imagem;
         post_imagem.style.width = "200px";
-        post_imagem.style.height = "140px";
+        post_imagem.style.height = "280px";
         post_imagem.style.marginBottom = "20px";  
         post_imagem.style.marginLeft = "20px"; 
         post_imagem.style.border = "2px solid #027373";
@@ -231,8 +236,8 @@
 
             const post_imagem = document.createElement('img');
             post_imagem.src = imagem;
-            post_imagem.style.width = "260px";
-            post_imagem.style.height = "180px";
+            post_imagem.style.width = "280px";
+            post_imagem.style.height = "28  0px";
             post_imagem.style.marginBottom = "20px";  
             post_imagem.style.marginLeft = "20px"; 
             post_imagem.style.border = "2px solid #027373";
